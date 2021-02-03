@@ -32,7 +32,7 @@ from tkinter import *
 from tkinter.ttk import Notebook
 from tkinter import scrolledtext
 from tkinter import messagebox
-import webbrowser
+import webbrowser 
 import datetime
 
 ```
