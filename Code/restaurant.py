@@ -83,12 +83,13 @@ def signup():
     messagebox.showinfo(
 
         "How to enter the Details: ",
-        """This shows how to enter the details properly. 
+        """ 
         The details should be in:
 
         - The username should contain at least 3 characters
         - The password should contain at least 6 characters.
-        - The name should contain at least 4 characters."""
+        - The name should contain at least 3 characters.
+        """
     )
 
     def exit_signup():
@@ -365,27 +366,34 @@ def tb():
         card_expiry_entry = Entry(checkout_frame, highlightbackground='black', highlightthickness=4)
         card_expiry_entry.place(x=400, y=140)
 
+        def summary():
+            summary_top_level = Toplevel()
+            summary_top_level.geometry("400x250")
+            summary_top_level.resizable(False, False)
+            summary_top_level.title("Summary")
+            
+            
+
         def verify_card():
             global year
             global month
-            global day
             card_no = card_no_entry.get()
 
             card_date = card_expiry_entry.get()
 
             try:
 
-                day, month, year = card_date.split('/')
+                month, year = card_date.split('/')
 
             except ValueError:
                 messagebox.showerror(
                     "Enter the date in correct format",
-                    "Please enter the date in the format : 'dd/mm/yyyy' "
+                    "Please enter the date in the format : 'mm/yyyy' "
                 )
 
             is_valid_date = True
             try:
-                datetime.datetime(int(year), int(month), int(day))
+                datetime.datetime(int(year), int(month), day=1)
             except ValueError:
                 is_valid_date = False
 
@@ -485,21 +493,21 @@ def tb():
                                 font=("Calibri", 12, 'bold'))
             banks_label.place(x=25, y=1)
 
-            bank1_radiobutton = Radiobutton(net_top_level, text='Citigroup', bg='white', fg='black',
+            bank1_checkbutton = Checkbutton(net_top_level, text='Citigroup', bg='white', fg='black',
                                             command=bank1_command)
-            bank1_radiobutton.place(x=25, y=25)
+            bank1_checkbutton.place(x=25, y=25)
 
-            bank2_radiobutton = Radiobutton(net_top_level, text='Bank of America', bg='white', fg='black',
+            bank2_checkbutton = Checkbutton(net_top_level, text='Bank of America', bg='white', fg='black',
                                             command=bank2_command)
-            bank2_radiobutton.place(x=25, y=50)
+            bank2_checkbutton.place(x=25, y=50)
 
-            bank3_radiobutton = Radiobutton(net_top_level, text='JPMorgan Chase', bg='white', fg='black',
+            bank3_checkbutton = Checkbutton(net_top_level, text='JPMorgan Chase', bg='white', fg='black',
                                             command=bank3_command)
-            bank3_radiobutton.place(x=25, y=75)
+            bank3_checkbutton.place(x=25, y=75)
 
-            bank4_radiobutton = Radiobutton(net_top_level, text='Wells Fargo', bg='white', fg='black',
+            bank4_checkbutton = Checkbutton(net_top_level, text='Wells Fargo', bg='white', fg='black',
                                             command=bank4_command)
-            bank4_radiobutton.place(x=25, y=100)
+            bank4_checkbutton.place(x=25, y=100)
 
         net_button = Button(checkout_frame, text='Choose a bank', bg='black', fg='white', command=net_banks)
         hover(net_button, on_entrance='#0E76A9', on_exit='black', entrance_fg='white', exit_fg='white')
@@ -513,6 +521,8 @@ def tb():
                             width=10, command=details)
     details_button.place(x=700, y=230)
     hover(details_button, on_entrance='black', on_exit='#0E76A9', exit_fg='white', entrance_fg='white')
+
+
 
 
 def sign_out():
@@ -575,7 +585,7 @@ placed with care in between the freshly baked bun.""",
                            bg='white', fg='#0E76A9', font=('Calibri', 13))
 burger_description.place(x=100, y=35)
 
-burger_price = Label(page1, text='Price: $3.55', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+burger_price = Label(page1, text=' $3.55', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 burger_price.place(x=520, y=80)
 
 burger_cart_button = Button(page1, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -601,7 +611,7 @@ fries_description = Label(page1, text=
                           bg='white', fg='black', font=('Calibri', 13))
 fries_description.place(x=100, y=175)
 
-fries_price = Label(page1, text='Price: $4.65', font=('Calibri', 15, "bold"), bg='white', fg='black')
+fries_price = Label(page1, text=' $4.65', font=('Calibri', 15, "bold"), bg='white', fg='black')
 fries_price.place(x=520, y=220)
 
 fries_cart_button = Button(page1, text='Add to Cart', font='Calibri', bg='black', fg='white', relief=FLAT, command=tb)
@@ -626,7 +636,7 @@ with some delicious sauces.""",
                           bg='white', fg='#0E76A9', font=('Calibri', 13))
 wings_description.place(x=100, y=320)
 
-wings_price = Label(page1, text='Price: $8.00', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+wings_price = Label(page1, text=' $8.00', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 wings_price.place(x=520, y=370)
 
 wings_cart_button = Button(page1, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -692,7 +702,7 @@ dressed with some delicious sauces.""",
                          bg='white', fg='#0E76A9', font=('Calibri', 13))
 rice_description.place(x=100, y=35)
 
-rice_price = Label(page2, text='Price: $8.45', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+rice_price = Label(page2, text=' $8.45', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 rice_price.place(x=520, y=80)
 
 rice_cart_button = Button(page2, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -718,7 +728,7 @@ a touch of American culture""",
                           bg='white', fg='black', font=('Calibri', 13))
 chops_description.place(x=150, y=175)
 
-chops_price = Label(page2, text='Price: $8.75', font=('Calibri', 15, "bold"), bg='white', fg='black')
+chops_price = Label(page2, text=' $8.75', font=('Calibri', 15, "bold"), bg='white', fg='black')
 chops_price.place(x=520, y=220)
 
 chops_cart_button = Button(page2, text='Add to Cart', font='Calibri', bg='black', fg='white', relief=FLAT, command=tb)
@@ -743,7 +753,7 @@ smoked into perfection.""",
                              bg='white', fg='#0E76A9', font=('Calibri', 13))
 meatloaf_description.place(x=130, y=320)
 
-meatloaf_price = Label(page2, text='Price: $7.60', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+meatloaf_price = Label(page2, text=' $7.60', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 meatloaf_price.place(x=520, y=370)
 
 meatloaf_cart_button = Button(page2, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -801,7 +811,7 @@ and the sour cream and parsley brings it alive""",
                              bg='white', fg='#0E76A9', font=('Calibri', 13))
 mushroom_description.place(x=100, y=35)
 
-mushroom_price = Label(page3, text='Price: $7.50', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+mushroom_price = Label(page3, text=' $7.50', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 mushroom_price.place(x=520, y=80)
 
 mushroom_cart_button = Button(page3, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -827,7 +837,7 @@ and Grilled/Roasted to perfection.""",
                                 bg='white', fg='black', font=('Calibri', 13))
 cauliflower_description.place(x=150, y=175)
 
-cauliflower_price = Label(page3, text='Price: $7.30', font=('Calibri', 15, "bold"), bg='white', fg='black')
+cauliflower_price = Label(page3, text=' $7.30', font=('Calibri', 15, "bold"), bg='white', fg='black')
 cauliflower_price.place(x=520, y=220)
 
 cauliflower_cart_button = Button(page3, text='Add to Cart', font='Calibri', bg='black', fg='white', relief=FLAT,
@@ -853,7 +863,7 @@ dressed with cheese.""",
                              bg='white', fg='#0E76A9', font=('Calibri', 13))
 macaroni_description.place(x=160, y=320)
 
-macaroni_price = Label(page3, text='Price: $5.0', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+macaroni_price = Label(page3, text=' $5.0', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 macaroni_price.place(x=520, y=370)
 
 macaroni_cart_button = Button(page3, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -910,7 +920,7 @@ consisting of crushed cookies, cheese, and others.""",
                          bg='white', fg='#0E76A9', font=('Calibri', 13))
 cake_description.place(x=120, y=35)
 
-cake_price = Label(page4, text='Price: $10.0', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+cake_price = Label(page4, text=' $10.0', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 cake_price.place(x=520, y=80)
 
 cake_cart_button = Button(page4, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -936,7 +946,7 @@ apple_description = Label(page4, text=
                           bg='white', fg='black', font=('Calibri', 13))
 apple_description.place(x=185, y=175)
 
-apple_price = Label(page4, text='Price: $5.00', font=('Calibri', 15, "bold"), bg='white', fg='black')
+apple_price = Label(page4, text=' $5.00', font=('Calibri', 15, "bold"), bg='white', fg='black')
 apple_price.place(x=520, y=220)
 
 apple_cart_button = Button(page4, text='Add to Cart', font='Calibri', bg='black', fg='white', relief=FLAT,
@@ -962,7 +972,7 @@ banana that is cut half. """,
                           bg='white', fg='#0E76A9', font=('Calibri', 13))
 split_description.place(x=160, y=320)
 
-split_price = Label(page4, text='Price: $8.25', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+split_price = Label(page4, text=' $8.25', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 split_price.place(x=520, y=370)
 
 split_cart_button = Button(page4, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -1020,7 +1030,7 @@ nuts mixed with tasty ice cream.""",
                          bg='white', fg='#0E76A9', font=('Calibri', 13))
 cold_description.place(x=180, y=35)
 
-cold_price = Label(page5, text='Price: $3.50', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+cold_price = Label(page5, text=' $3.50', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 cold_price.place(x=520, y=80)
 
 cold_cart_button = Button(page5, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
@@ -1046,7 +1056,7 @@ dry fruits, that is chilled.""",
                                bg='white', fg='black', font=('Calibri', 13))
 strawberry_description.place(x=185, y=175)
 
-strawberry_price = Label(page5, text='Price: $3.00', font=('Calibri', 15, "bold"), bg='white', fg='black')
+strawberry_price = Label(page5, text=' $3.00', font=('Calibri', 15, "bold"), bg='white', fg='black')
 strawberry_price.place(x=520, y=220)
 
 strawberry_cart_button = Button(page5, text='Add to Cart', font='Calibri', bg='black', fg='white', relief=FLAT,
@@ -1072,7 +1082,8 @@ milk and chilled to taste.""",
                                bg='white', fg='#0E76A9', font=('Calibri', 13))
 watermelon_description.place(x=160, y=320)
 
-watermelon_price = Label(page5, text='Price: $2.70', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+watermelon_price = Label(page5, text=' $2.70', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
+watermelon_price = Label(page5, text=' $2.70', font=('Calibri', 15, "bold"), bg='white', fg='#0E76A9')
 watermelon_price.place(x=520, y=370)
 
 watermelon_cart_button = Button(page5, text='Add to Cart', font='Calibri', bg='#0E76A9', fg='white', relief=FLAT,
