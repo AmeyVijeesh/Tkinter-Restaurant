@@ -13,7 +13,7 @@ root.geometry("900x650")
 root.title("Tasty Menu")
 root.resizable(False, False)
 
-notebook = Notebook(root)
+notebook = Notebook(root)   
 
 page1 = Frame(notebook, width=650, height=550, bg='white')
 page2 = Frame(notebook, width=650, height=550, bg='white')
