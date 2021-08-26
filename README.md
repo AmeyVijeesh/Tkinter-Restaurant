@@ -16,12 +16,12 @@ TastyMenu has many features like:
 - Add to Cart
 - Shipping Address and Billing Address
 - 25 American Items
-- 3 diffrent types of delivery available
+- 3 different types of delivery available
 - And many more!
 
 # Program
 
-Now, comming to the Code of the program:
+Now, coming to the Code of the program:
 
 # Packages needed:
 
