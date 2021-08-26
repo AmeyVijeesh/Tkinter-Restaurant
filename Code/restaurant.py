@@ -10,7 +10,7 @@ line = '________________________________________________________________________
 root = Tk()
 root.config(bg='white')
 root.geometry("900x650")
-root.title("Tasty Menu")
+root.title("Tasty Menu Restaurant")
 root.resizable(False, False)
 
 notebook = Notebook(root)   
