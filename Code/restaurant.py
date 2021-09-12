@@ -372,7 +372,6 @@ def tb():
             summary_top_level.resizable(False, False)
             summary_top_level.title("Summary")
             
-            
 
         def verify_card():
             global year
