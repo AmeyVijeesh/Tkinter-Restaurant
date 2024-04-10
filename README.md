@@ -12,7 +12,7 @@ Restaurant app made with Tkinter
 
 # Packages needed:
 
-You don't have to install any packages. All the packages are build-in.
+All packages are built-in
 
 ```
 from tkinter import *
@@ -24,6 +24,6 @@ import datetime
 
 ```
 
-# 
-
+# Issues
+Bring up any bugs/problems in the issues tab.
 
